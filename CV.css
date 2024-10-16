@@ -20,15 +20,15 @@ body {
 }
 .left {
 	position: initial;
-	background-color: #CCC;
+	background-color: #262223;
 	padding: 20px;
-
+	color: #DDC6B6
 }
 .right {
 	position: initial;
-	background-color: #FFF;
+	background-color: #DDC6B6;
 	padding: 20px;
-
+	color: #262223
 }
 .image, .Contact, .Skills, .Language, .Hobbies, .title, 
 .Summary, .Experience, .Education, .project {
