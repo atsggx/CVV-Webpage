@@ -1,117 +1,436 @@
 <!DOCTYPE html>
-<html>
-<title>CV</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
-</style>
-<body class="w3-light-grey">
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shubham Gupta - Personal CV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Tailwind gray-50 */
+        }
+        /* Animation for sections fading in */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Simple underline animation for nav links */
+        .nav-link {
+            position: relative;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            right: 0;
+            background: #3b82f6; /* Tailwind blue-500 */
+            transition: width 0.3s ease;
+            -webkit-transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+            background-color: #3b82f6; /* Tailwind blue-500 */
+        }
+        .nav-link:hover {
+             color: #3b82f6; /* Tailwind blue-500 */
+        }
+        /* Style for skill tags */
+        .skill-tag {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .skill-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
 
-<!-- Page Container -->
-<div class="w3-content w3-margin-top" style="max-width:1400px;">
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-gray-800 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">atsggx</div>
+            <div class="space-x-6 hidden md:flex">
+                <a href="#about" class="nav-link text-gray-600">About</a>
+                <a href="#experience" class="nav-link text-gray-600">Experience</a>
+                <a href="#education" class="nav-link text-gray-600">Education</a>
+                <a href="#skills" class="nav-link text-gray-600">Skills</a>
+                <a href="#projects" class="nav-link text-gray-600">Projects</a>
+                <a href="#contact" class="nav-link text-gray-600">Psst...</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                <i class="fas fa-bars text-gray-600 text-xl"></i>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
+            <a href="#about" class="block nav-link text-gray-600">About</a>
+            <a href="#experience" class="block nav-link text-gray-600">Experience</a>
+            <a href="#education" class="block nav-link text-gray-600">Education</a>
+            <a href="#skills" class="block nav-link text-gray-600">Skills</a>
+            <a href="#projects" class="block nav-link text-gray-600">Projects</a>
+            <a href="#contact" class="block nav-link text-gray-600">Contact</a>
+        </div>
+    </header>
 
-  <!-- The Grid -->
-  <div class="w3-row-padding">
-  
-    <!-- Left Column -->
-    <div class="w3-third">
-    
-      <div class="w3-white w3-text-grey w3-card-4">
-        <div class="w3-display-container">
-          <img src="Avatar.jpg" style="width:100%" alt="Avatar">
-          <div class="w3-display-bottomright w3-container w3-text-white">
-            <h2>Shubham Gupta</h2>
-          </div>
-        </div>
-        <div class="w3-container">
-          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Computer Science Student</p>
-          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>South West Delhi</p>
-          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>atsggx@gmail.com</p>
-          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>7042564150</p>
-          <hr>
+    <main class="container mx-auto px-6 py-12">
 
-          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
-          <p>Writing</p>
-	  <p>Programing (Python, C, Java)</p>
-	  <p>Front-end (HTML5, CSS3, JS)</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-          </div>
-          <p>Game Devlopment (GDScript and Ruby)</p>
-          <p>Machine Learning</p>
-	  <p>OSINT</p>
-          <br>
+        <section id="hero" class="text-center mb-16 fade-in-section">
+             <img src="Avatar.jpg"
+                  alt="Shubham Gupta - Profile Picture"
+                  class="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-6 border-4 border-blue-200 shadow-lg"
+                  onerror="this.onerror=null; this.src='https://placehold.co/150x150/e2e8f0/64748b?text=Profile+Pic';">
+            <h1 class="text-4xl md:text-5xl font-bold mb-2">Shubham Gupta</h1>
+            <p class="text-xl md:text-2xl text-blue-600 font-medium mb-4">Computer Science Student</p>
+            <p class="text-gray-600 max-w-2xl mx-auto mb-6">
+                Copyeditor skilled in managing digital publications. Experienced in proofreading and team leadership. Passionate about linguistics and typesetting.
+            </p>
+            <div class="flex justify-center space-x-4">
+                <a href="https://www.linkedin.com/in/atsggx" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-blue-600 transition duration-300">
+                    <i class="fab fa-linkedin fa-2x"></i>
+                </a>
+                <a href="https://github.com/atsggx" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-blue-600 transition duration-300">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
+                <a href="mailto:shubhamgupta@atsggx.net" class="text-gray-500 hover:text-blue-600 transition duration-300">
+                    <i class="fas fa-envelope fa-2x"></i>
+                </a>
+            </div>
+        </section>
 
-          <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Languages</b></p>
-          <p>English</p>
-          <div class="w3-light-grey w3-round-xlarge">
-            <div class="w3-round-xlarge w3-teal" style="height:24px;width:100%"></div>
-          </div>
-          <p>Hindi</p>
-          <div class="w3-light-grey w3-round-xlarge">
-            <div class="w3-round-xlarge w3-teal" style="height:24px;width:90%"></div>
-          </div>
-          <br>
-        </div>
-      </div><br>
+        <section id="about" class="mb-16 p-8 bg-white rounded-lg shadow-lg fade-in-section">
+            <h2 class="text-3xl font-semibold mb-6 border-b-2 border-blue-200 pb-2">About Me</h2>
+            <p class="text-gray-700 leading-relaxed">
+                I have been passionate about computers and English linguistics (especially Middle English)
+                for as long as I can remember. To pursue my professional interests, I have taken computer
+                science education courses and worked as a freelance copyeditor. I continue to learn in my
+                free time by taking courses, practicing programming languages, and making games.
+            </p>
+        </section>
 
-    <!-- End Left Column -->
-    </div>
+        <section id="projects" class="mb-16 fade-in-section">
+            <h2 class="text-3xl font-semibold mb-6 border-b-2 border-blue-200 pb-2">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                    <img src="Fashion.jpeg"
+                         alt="Project 1 Screenshot"
+                         class="w-full h-48 object-cover"
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/a5b4fc/1e3a8a?text=Project+Screenshot';">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-semibold text-blue-700 mb-2">Fashion-MNIST CNN UI</h3>
+                        <p class="text-gray-700 mb-4 flex-grow">
+                            A simple UI for a CNN model that classifies Fashion-MNIST images.
+                        </p>
+                        <div class="mt-auto">
+                           <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Gradio</span>
+                           <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#ML</span>
+                        </div>
+                        <div class="mt-4 flex space-x-4">
+                            <a href="https://huggingface.co/spaces/atsggx/Fashion-MNIST_CNN_UI" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline font-medium">
+                                <i class="fas fa-external-link-alt mr-1"></i> Hugging Face Space
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                     <img src="Maniac.jpeg"
+                          alt="Project 2 Screenshot"
+                          class="w-full h-48 object-cover"
+                          onerror="this.onerror=null; this.src='https://placehold.co/600x400/a5b4fc/1e3a8a?text=Project+Screenshot';">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-semibold text-blue-700 mb-2">Maniac: Movie Q&A RAG</h3>
+                        <p class="text-gray-700 mb-4 flex-grow">
+                            Made under the tutelage Prof. Ketan Rajawat, Dept. of Electrical Engineering.
+                        </p>
+                         <div class="mt-auto">
+                           <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#RAG</span>
+                           <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Deep Learning</span>
+                        </div>
+                        <div class="mt-4 flex space-x-4">
+                            <a href="https://github.com/atsggx/RAG-Movie" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline font-medium">
+                                <i class="fab fa-github mr-1"></i> GitHub
+                            </a>
+                            </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                     <img src="InternetFreedom.jpeg"
+                          alt="Project 3 Screenshot"
+                          class="w-full h-48 object-cover"
+                          onerror="this.onerror=null; this.src='https://placehold.co/600x400/a5b4fc/1e3a8a?text=Project+Screenshot';">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-semibold text-blue-700 mb-2">ML for SDG 16</h3>
+                        <p class="text-gray-700 mb-4 flex-grow">
+                            Leveraging machine learning to predict internet freedom based on internet control methods.
+                        </p>
+                         <div class="mt-auto">
+                           <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Data Science</span>
+                           <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#ML</span>
+                        </div>
+                        <div class="mt-4 flex space-x-4">
+                            <a href="https://colab.research.google.com/drive/1lzQSTXxj5i6H70QqVBufdI94boNMa_k1?usp=sharing" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline font-medium">
+                                <i class="fas fa-external-link-alt mr-1"></i> Google Colab
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Right Column -->
-    <div class="w3-twothird">
-    
-      <div class="w3-container w3-card w3-white w3-margin-bottom">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Experience</h2>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Content Writing Team Head / Association of Computer Enthusiasts</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jul 2024 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
-          <p>Team leadership and mentorship in college technical society. Website: <a href="https://vipsace.org/" target="_blank">vipsace.org</a></p>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Core Member / Association of Computer Enthusiasts</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Aug 2023 - Jul 2024</h6>
-          <p>Event management duties.</p>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Member / Association of Computer Enthusiasts</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jan 2023 - Aug 2023</h6>
-          <p>Joined as member of the Content Writing and Cyber Security teams.</p><br>
-		  <hr>
-        </div>
-		<div class="w3-container">
-          <h5 class="w3-opacity"><b>Copyeditor / Fan Translation</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Mar 2022 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
-          <p>Work on comics and novels with hundreds of thousands of readers.</p>
-        </div>
-      </div>
+        <section id="skills" class="mb-16 fade-in-section">
+            <h2 class="text-3xl font-semibold mb-6 border-b-2 border-blue-200 pb-2">Skills</h2>
+            <div class="p-6 bg-white rounded-lg shadow-lg">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-700 mb-3">Programming Languages</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Python</span>
+                            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">GDScript</span>
+                            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">HTML/CSS/JS</span>
+                            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Ruby</span>
+                            </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-700 mb-3">Frameworks & Libraries</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Pandas</span>
+                            <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Matplotlib</span>
+                            <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Numpy</span>
+                            <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">LangChain</span>
+                            </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-700 mb-3">Tools & Platforms</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Git</span>
+                            <span class="skill-tag bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Google Workspace</span>
+                            <span class="skill-tag bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Cursor</span>
+                            <span class="skill-tag bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Godot</span>
+                             </div>
+                    </div>
+                     <div>
+                        <h3 class="text-lg font-semibold text-gray-700 mb-3">Other Skills</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">OSINT</span>
+                            <span class="skill-tag bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">American Culture</span>
+                            <span class="skill-tag bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Typing</span>
+                             </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <div class="w3-container w3-card w3-white">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education</h2>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Vivekananda Institute of Professional Studies - Technical Campus</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2022 - 2025</h6>
-          <p>Bachelor of Computer Applications</p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Delhi Public School, Vasant Kunj</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2008 - 2022</h6>
-          <p>Physics, Chemistry, English, Mathematics, and Computer Science</p><br>
-        </div>
-      </div>
+        <section id="experience" class="mb-16 fade-in-section">
+            <h2 class="text-3xl font-semibold mb-6 border-b-2 border-blue-200 pb-2">Experience</h2>
+            <div class="space-y-8">
+                <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 class="text-xl font-semibold text-blue-700">Content Writing Team Head</h3>
+                            <p class="text-md text-gray-600">Association of Computer Enthusiasts</p>
+                        </div>
+                        <span class="text-sm text-gray-500 whitespace-nowrap">Jul 2024 - Present</span>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1 pl-4">
+                        <li>Selection and implementation of a style guide</li>
+                        <li>Training proofreaders and junior writers; team leadership and mentorship</li>
+                        <li>Supervision of internal documents and general record-keeping</li>
+                        <li>Event organization (hackathons, CTFs, revenue generation)</li>
+                    </ul>
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 class="text-xl font-semibold text-blue-700">Copyeditor</h3>
+                            <p class="text-md text-gray-600">Fan Translation</p>
+                        </div>
+                        <span class="text-sm text-gray-500 whitespace-nowrap">Mar 2022 - Present</span>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1 pl-4">
+                        <li>Work on comics and novels with hundreds of thousands of readers</li>
+                        <li>Series management on projects with international staff members</li>
+                    </ul>
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 class="text-xl font-semibold text-blue-700">Content Writing Intern</h3>
+                            <p class="text-md text-gray-600">Pexilim</p>
+                        </div>
+                        <span class="text-sm text-gray-500 whitespace-nowrap">Dec 2024 - Mar 2025</span>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1 pl-4">
+                        <li>Blog-writing for clients according to SEO specifications</li>
+                        <li>Compliance with Copyleaks AI Detector and a plagiarism check</li>
+                    </ul>
+                </div>
+                </div>
+        </section>
 
-    <!-- End Right Column -->
-    </div>
-    
-  <!-- End Grid -->
-  </div>
-  
-  <!-- End Page Container -->
-</div>
+        <section id="education" class="mb-16 fade-in-section">
+            <h2 class="text-3xl font-semibold mb-6 border-b-2 border-blue-200 pb-2">Education</h2>
+            <div class="space-y-6">
+                <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex justify-between items-start mb-1">
+                        <div>
+                            <h3 class="text-xl font-semibold text-blue-700">Bachelor of Computer Applications</h3>
+                            <p class="text-md text-gray-600">Vivekananda Institute of Professional Studies, Pitampura</p>
+                        </div>
+                        <span class="text-sm text-gray-500 whitespace-nowrap">2025</span>
+                    </div>
+                    <p class="text-gray-700 mt-2">
+                        Specialization in AI/ML.
+                    </p>
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                     <div class="flex justify-between items-start mb-1">
+                        <div>
+                            <h3 class="text-xl font-semibold text-blue-700">PCEM Computer Science</h3>
+                            <p class="text-md text-gray-600">Delhi Public School, Vasant Kunj</p>
+                        </div>
+                        <span class="text-sm text-gray-500 whitespace-nowrap">2022</span>
+                    </div>
+                </div>
+                </div>
+        </section>
+
+        <section id="contact" class="mb-16 p-8 bg-white rounded-lg shadow-lg fade-in-section">
+            <h2 class="text-3xl font-semibold mb-6 text-center border-b-2 border-blue-200 pb-2">Post Scriptum (Misc.)</h2>
+            <p class="text-gray-700 text-center max-w-lg mx-auto mb-8">
+                <strong>Favorite Game:</strong> Disco Elysium<br>
+                <strong>Favorite Genre:</strong> Swing<br>
+                <strong>Favorite Cause:</strong> Internet Freedom<br>
+                <strong>Phases I've Gone Through:</strong><br>
+                Swords & Castles; Classic Menswear; Coffee<br><br>
+                If you want to say hi, feel free to reach out!
+            </p>
+            <div class="text-center">
+                 <a href="mailto:shubhamgupta@atsggx.net"
+                    class="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 transform hover:-translate-y-1">
+                     <i class="fas fa-envelope mr-2"></i> Email
+                 </a>
+            </div>
+             </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-gray-300 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-4">
+                <a href="https://www.linkedin.com/in/atsggx" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-blue-600 transition duration-300">
+                    <i class="fab fa-linkedin fa-2x"></i>
+                </a>
+                <a href="https://github.com/atsggx" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-blue-600 transition duration-300">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
+                <a href="mailto:shubhamgupta@atsggx.net" class="text-gray-500 hover:text-blue-600 transition duration-300">
+                    <i class="fas fa-envelope fa-2x"></i>
+                </a>
+            </div>
+            <p class="text-sm">&copy; <span id="current-year"></span> Shubham Gupta. All rights reserved.</p>
+            <p class="text-xs mt-2">Built with <a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 underline">Tailwind CSS</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Mobile Menu Toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            // Toggle burger icon to 'X' icon
+            const icon = mobileMenuButton.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileNavLinks = mobileMenu.querySelectorAll('a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                 const icon = mobileMenuButton.querySelector('i');
+                 icon.classList.remove('fa-times');
+                 icon.classList.add('fa-bars');
+            });
+        });
+
+
+        // --- Smooth Scrolling for Navigation Links ---
+        // Handled by CSS `scroll-smooth` on <html> tag, but this JS ensures wider compatibility if needed
+        // document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        //     anchor.addEventListener('click', function (e) {
+        //         e.preventDefault();
+        //         try {
+        //             const targetId = this.getAttribute('href');
+        //             const targetElement = document.querySelector(targetId);
+        //             if(targetElement) {
+        //                targetElement.scrollIntoView({
+        //                     behavior: 'smooth'
+        //                 });
+        //             }
+        //         } catch (error) {
+        //             console.error("Error scrolling:", error);
+        //             // Fallback for older browsers or errors
+        //             window.location.hash = this.getAttribute('href');
+        //         }
+        //     });
+        // });
+
+        // --- Fade-in Animation on Scroll ---
+        const sections = document.querySelectorAll('.fade-in-section');
+
+        const observerOptions = {
+            root: null, // relative to document viewport
+            rootMargin: '0px',
+            threshold: 0.1 // trigger when 10% of the element is visible
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Optional: Stop observing the element once it's visible
+                    // observer.unobserve(entry.target);
+                }
+                // Optional: If you want the animation to reverse when scrolling up
+                // else {
+                //     entry.target.classList.remove('is-visible');
+                // }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // --- Update Footer Year ---
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    </script>
 
 </body>
 </html>
