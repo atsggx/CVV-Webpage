@@ -123,22 +123,6 @@ html.dark .card-accent:hover {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
-/* ===== Avatar Gradient Ring ===== */
-.avatar-ring {
-    padding: 4px;
-    background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
-    border-radius: 9999px;
-    display: inline-block;
-}
-
-.avatar-ring img {
-    border: 3px solid white;
-    border-radius: 9999px;
-}
-
-html.dark .avatar-ring img {
-    border-color: #111827;
-}
 
 /* ===== Theme Toggle - Sun/Moon Morph ===== */
 .theme-toggle {
@@ -199,6 +183,61 @@ html.dark .theme-toggle .moon-icon {
 .footer-divider {
     height: 3px;
     background: linear-gradient(90deg, transparent, #3b82f6, #8b5cf6, transparent);
+}
+
+/* ===== Experience Timeline Group ===== */
+.timeline-group {
+    position: relative;
+    border-left: 2px solid #d1d5db;
+}
+
+html.dark .timeline-group {
+    border-left-color: #4b5563;
+}
+
+.timeline-role {
+    position: relative;
+}
+
+.timeline-role::before {
+    content: '';
+    position: absolute;
+    left: calc(-1.5rem - 6px);
+    top: 0.45rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 9999px;
+    background: #3b82f6;
+    border: 2px solid #fff;
+}
+
+html.dark .timeline-role::before {
+    background: #60a5fa;
+    border-color: #1f2937;
+}
+
+/* ===== Post Scriptum Cards ===== */
+.ps-card {
+    border-left: 3px solid transparent;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.ps-card:hover {
+    border-left-color: var(--card-border-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+html.dark .ps-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.ps-icon {
+    transition: transform 0.3s ease;
+}
+
+.ps-card:hover .ps-icon {
+    transform: scale(1.15);
 }
 
 /* ===== Project Card Image Hover ===== */
