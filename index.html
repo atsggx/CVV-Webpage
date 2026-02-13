@@ -9,81 +9,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --link-underline-color: #3b82f6;
-            --link-hover-color: #3b82f6;
-        }
-        html.dark {
-            --link-underline-color: #60a5fa;
-            --link-hover-color: #60a5fa;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .nav-link {
-            position: relative;
-            text-decoration: none;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            display: block;
-            margin-top: 5px;
-            right: 0;
-            background: var(--link-underline-color, #3b82f6);
-            transition: width 0.3s ease;
-            -webkit-transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-            left: 0;
-        }
-        .nav-link:hover {
-           color: var(--link-hover-color);
-        }
-        .skill-tag {
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.3s, color 0.3s;
-        }
-        .skill-tag:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        html {
-            scroll-padding-top: 80px;
-        }
-        @media (min-width: 768px) {
-             html {
-                scroll-padding-top: 70px;
-            }
-        }
-    </style>
-     <script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script>
         if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         } else {
             document.documentElement.classList.remove('dark');
         }
-        tailwind.config = {
-            darkMode: 'class'
-        }
+        tailwind.config = { darkMode: 'class' }
     </script>
 </head>
 <body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
 
-    <header class="bg-white dark:bg-gray-900 shadow-md sticky top-0 z-50 transition-colors duration-300">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <!-- Navbar -->
+    <header class="navbar-frost shadow-md sticky top-0 z-50 transition-colors duration-300">
+        <nav class="container mx-auto max-w-5xl px-6 py-4 flex justify-between items-center">
             <div class="text-2xl font-bold text-gray-800 dark:text-gray-100 cursor-pointer transition-colors duration-300" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">atsggx</div>
             <div class="flex items-center space-x-2 md:space-x-4">
                 <div class="space-x-6 hidden md:flex">
@@ -94,52 +34,77 @@
                     <a href="#education" class="nav-link text-gray-600 dark:text-gray-300 dark:hover:text-blue-400">Education</a>
                     <a href="#contact" class="nav-link text-gray-600 dark:text-gray-300 dark:hover:text-blue-400">Psst...</a>
                 </div>
-                <button id="dark-mode-toggle" aria-label="Toggle Dark Mode" class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-900 transition-all duration-300">
-                    <i id="dark-mode-icon" class="fas fa-moon text-lg"></i>
+
+                <!-- Theme Toggle with Sun/Moon Morph -->
+                <button id="dark-mode-toggle" aria-label="Toggle Dark Mode" class="theme-toggle bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900">
+                    <!-- Sun SVG -->
+                    <svg class="theme-toggle-icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line class="sun-ray" x1="12" y1="1" x2="12" y2="3"></line>
+                        <line class="sun-ray" x1="12" y1="21" x2="12" y2="23"></line>
+                        <line class="sun-ray" x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line class="sun-ray" x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line class="sun-ray" x1="1" y1="12" x2="3" y2="12"></line>
+                        <line class="sun-ray" x1="21" y1="12" x2="23" y2="12"></line>
+                        <line class="sun-ray" x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line class="sun-ray" x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <!-- Moon SVG -->
+                    <svg class="theme-toggle-icon moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        <circle cx="14" cy="9" r="1" fill="currentColor" opacity="0.3"></circle>
+                        <circle cx="16" cy="14" r="0.7" fill="currentColor" opacity="0.2"></circle>
+                    </svg>
                 </button>
+
                 <button id="mobile-menu-button" class="md:hidden focus:outline-none p-2">
                     <i class="fas fa-bars text-gray-600 dark:text-gray-300 text-xl"></i>
                 </button>
             </div>
         </nav>
-        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 transition-colors duration-300">
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2 border-t border-gray-200 dark:border-gray-700 transition-colors duration-300">
             <a href="#about" class="block nav-link text-gray-600 dark:text-gray-300 dark:hover:text-blue-400 py-2">About</a>
+            <a href="#projects" class="block nav-link text-gray-600 dark:text-gray-300 dark:hover:text-blue-400 py-2">Projects</a>
+            <a href="#skills" class="block nav-link text-gray-600 dark:text-gray-300 dark:hover:text-blue-400 py-2">Skills</a>
             <a href="#experience" class="block nav-link text-gray-600 dark:text-gray-300 dark:hover:text-blue-400 py-2">Experience</a>
             <a href="#education" class="block nav-link text-gray-600 dark:text-gray-300 dark:hover:text-blue-400 py-2">Education</a>
-            <a href="#skills" class="block nav-link text-gray-600 dark:text-gray-300 dark:hover:text-blue-400 py-2">Skills</a>
-            <a href="#projects" class="block nav-link text-gray-600 dark:text-gray-300 dark:hover:text-blue-400 py-2">Projects</a>
-            <a href="#contact" class="block nav-link text-gray-600 dark:text-gray-300 dark:hover:text-blue-400 py-2">Contact</a>
+            <a href="#contact" class="block nav-link text-gray-600 dark:text-gray-300 dark:hover:text-blue-400 py-2">Psst...</a>
         </div>
     </header>
 
-    <main class="container mx-auto px-6 py-12">
+    <!-- Main Content -->
+    <main class="container mx-auto max-w-5xl px-6 py-12">
 
-        <section id="hero" class="text-center pt-8 mb-16 fade-in-section">
-             <img src="Avatar.jpg"
-                  alt="Shubham Gupta - Profile Picture"
-                  class="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-6 border-4 border-blue-200 dark:border-blue-700 shadow-lg"
-                  onerror="this.onerror=null; this.src='https://placehold.co/150x150/e2e8f0/64748b?text=Profile+Pic';">
-            <h1 class="text-4xl md:text-5xl font-bold mb-2 text-gray-900 dark:text-gray-100">Shubham Gupta</h1>
+        <!-- Hero -->
+        <section id="hero" class="text-center pt-8 mb-20 fade-in-section">
+            <div class="avatar-ring mx-auto mb-6 w-36 h-36 md:w-44 md:h-44">
+                <img src="assets/images/Avatar.jpg"
+                     alt="Shubham Gupta - Profile Picture"
+                     class="w-full h-full object-cover"
+                     onerror="this.onerror=null; this.src='https://placehold.co/150x150/e2e8f0/64748b?text=Profile+Pic';">
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold mb-3 text-gray-900 dark:text-gray-100">Shubham Gupta</h1>
             <p class="text-xl md:text-2xl text-blue-600 dark:text-blue-400 font-medium mb-4">Computer Science Student</p>
-            <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-6">
+            <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8 leading-relaxed">
                 Copyeditor skilled in managing digital publications. Experienced in proofreading and team leadership. Passionate about linguistics and typesetting.
             </p>
-            <div class="flex justify-center space-x-4">
-                <a href="https://www.linkedin.com/in/atsggx" target="_blank" rel="noopener noreferrer" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300">
+            <div class="flex justify-center space-x-5">
+                <a href="https://www.linkedin.com/in/atsggx" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300 transform hover:-translate-y-1">
                     <i class="fab fa-linkedin fa-2x"></i>
                 </a>
-                <a href="https://github.com/atsggx" target="_blank" rel="noopener noreferrer" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300">
+                <a href="https://github.com/atsggx" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300 transform hover:-translate-y-1">
                     <i class="fab fa-github fa-2x"></i>
                 </a>
-                <a href="mailto:shubhamgupta@atsggx.net" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300">
+                <a href="mailto:shubhamgupta@atsggx.net" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300 transform hover:-translate-y-1">
                     <i class="fas fa-envelope fa-2x"></i>
                 </a>
             </div>
         </section>
 
-        <section id="about" class="mb-16 p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg fade-in-section transition-colors duration-300">
-            <h2 class="text-3xl font-semibold mb-6 border-b-2 border-blue-200 dark:border-gray-700 pb-2 text-gray-900 dark:text-gray-100">About Me</h2>
-            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        <!-- About -->
+        <section id="about" class="mb-20 p-8 bg-white dark:bg-gray-800 rounded-xl shadow-lg card-accent fade-in-section transition-colors duration-300">
+            <h2 class="section-heading text-3xl font-semibold mb-6 text-gray-900 dark:text-gray-100">About Me</h2>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
                 I have been passionate about computers and English linguistics (especially Middle English)
                 for as long as I can remember. To pursue my professional interests, I have taken computer
                 science education courses and worked as a freelance copyeditor. I continue to learn in my
@@ -147,22 +112,25 @@
             </p>
         </section>
 
-        <section id="projects" class="mb-16 fade-in-section">
-            <h2 class="text-3xl font-semibold mb-6 border-b-2 border-blue-200 dark:border-gray-700 pb-2 text-gray-900 dark:text-gray-100">Projects</h2>
+        <!-- Projects -->
+        <section id="projects" class="mb-20 fade-in-section">
+            <h2 class="section-heading text-3xl font-semibold mb-8 text-gray-900 dark:text-gray-100">Projects</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col transition-colors duration-300">
-                    <img src="Fashion.jpeg"
-                         alt="Project 1 Screenshot"
-                         class="w-full h-48 object-cover"
-                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/a5b4fc/1e3a8a?text=Project+Screenshot';">
+                <div class="project-card bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="overflow-hidden">
+                        <img src="assets/images/Fashion.jpeg"
+                             alt="Fashion-MNIST CNN UI Screenshot"
+                             class="w-full h-48 object-cover"
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/a5b4fc/1e3a8a?text=Project+Screenshot';">
+                    </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-semibold text-blue-700 dark:text-blue-400 mb-2">Fashion-MNIST CNN UI</h3>
                         <p class="text-gray-700 dark:text-gray-300 mb-4 flex-grow">
                             A simple UI for a CNN model that classifies Fashion-MNIST images.
                         </p>
                         <div class="mt-auto">
-                           <span class="skill-tag inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 dark:text-gray-200 mr-2 mb-2">#Gradio</span>
-                           <span class="skill-tag inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 dark:text-gray-200 mr-2 mb-2">#ML</span>
+                            <span class="skill-tag inline-block bg-gray-100 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 dark:text-gray-200 mr-2 mb-2">#Gradio</span>
+                            <span class="skill-tag inline-block bg-gray-100 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 dark:text-gray-200 mr-2 mb-2">#ML</span>
                         </div>
                         <div class="mt-4 flex space-x-4">
                             <a href="https://huggingface.co/spaces/atsggx/Fashion-MNIST_CNN_UI" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 hover:underline font-medium">
@@ -171,19 +139,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col transition-colors duration-300">
-                     <img src="Maniac.jpeg"
-                          alt="Project 2 Screenshot"
-                          class="w-full h-48 object-cover"
-                          onerror="this.onerror=null; this.src='https://placehold.co/600x400/a5b4fc/1e3a8a?text=Project+Screenshot';">
+
+                <div class="project-card bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="overflow-hidden">
+                        <img src="assets/images/Maniac.jpeg"
+                             alt="Maniac RAG Project Screenshot"
+                             class="w-full h-48 object-cover"
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/a5b4fc/1e3a8a?text=Project+Screenshot';">
+                    </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-semibold text-blue-700 dark:text-blue-400 mb-2">Maniac: Movie Q&A RAG</h3>
                         <p class="text-gray-700 dark:text-gray-300 mb-4 flex-grow">
                             Made under the tutelage Prof. Ketan Rajawat, Dept. of Electrical Engineering.
                         </p>
-                         <div class="mt-auto">
-                           <span class="skill-tag inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 dark:text-gray-200 mr-2 mb-2">#RAG</span>
-                           <span class="skill-tag inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 dark:text-gray-200 mr-2 mb-2">#Deep Learning</span>
+                        <div class="mt-auto">
+                            <span class="skill-tag inline-block bg-gray-100 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 dark:text-gray-200 mr-2 mb-2">#RAG</span>
+                            <span class="skill-tag inline-block bg-gray-100 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 dark:text-gray-200 mr-2 mb-2">#Deep Learning</span>
                         </div>
                         <div class="mt-4 flex space-x-4">
                             <a href="https://github.com/atsggx/RAG-Movie" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 hover:underline font-medium">
@@ -192,19 +163,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col transition-colors duration-300">
-                     <img src="InternetFreedom.jpeg"
-                          alt="Project 3 Screenshot"
-                          class="w-full h-48 object-cover"
-                          onerror="this.onerror=null; this.src='https://placehold.co/600x400/a5b4fc/1e3a8a?text=Project+Screenshot';">
+
+                <div class="project-card bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="overflow-hidden">
+                        <img src="assets/images/InternetFreedom.jpeg"
+                             alt="ML for SDG 16 Screenshot"
+                             class="w-full h-48 object-cover"
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/a5b4fc/1e3a8a?text=Project+Screenshot';">
+                    </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-semibold text-blue-700 dark:text-blue-400 mb-2">ML for SDG 16</h3>
                         <p class="text-gray-700 dark:text-gray-300 mb-4 flex-grow">
                             Leveraging machine learning to predict internet freedom based on internet control methods.
                         </p>
-                         <div class="mt-auto">
-                           <span class="skill-tag inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 dark:text-gray-200 mr-2 mb-2">#Data Science</span>
-                           <span class="skill-tag inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 dark:text-gray-200 mr-2 mb-2">#ML</span>
+                        <div class="mt-auto">
+                            <span class="skill-tag inline-block bg-gray-100 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 dark:text-gray-200 mr-2 mb-2">#Data Science</span>
+                            <span class="skill-tag inline-block bg-gray-100 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 dark:text-gray-200 mr-2 mb-2">#ML</span>
                         </div>
                         <div class="mt-4 flex space-x-4">
                             <a href="https://colab.research.google.com/drive/1lzQSTXxj5i6H70QqVBufdI94boNMa_k1?usp=sharing" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 hover:underline font-medium">
@@ -216,10 +190,11 @@
             </div>
         </section>
 
-        <section id="skills" class="mb-16 fade-in-section">
-            <h2 class="text-3xl font-semibold mb-6 border-b-2 border-blue-200 dark:border-gray-700 pb-2 text-gray-900 dark:text-gray-100">Skills</h2>
-            <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg transition-colors duration-300">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Skills -->
+        <section id="skills" class="mb-20 fade-in-section">
+            <h2 class="section-heading text-3xl font-semibold mb-8 text-gray-900 dark:text-gray-100">Skills</h2>
+            <div class="p-8 bg-white dark:bg-gray-800 rounded-xl shadow-lg transition-colors duration-300">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
                         <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">Programming Languages</h3>
                         <div class="flex flex-wrap gap-2">
@@ -247,94 +222,97 @@
                             <span class="skill-tag bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 px-3 py-1 rounded-full text-sm font-medium">Godot</span>
                         </div>
                     </div>
-                     <div>
+                    <div>
                         <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">Other Skills</h3>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-tag bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200 px-3 py-1 rounded-full text-sm font-medium">OSINT</span>
                             <span class="skill-tag bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200 px-3 py-1 rounded-full text-sm font-medium">American Culture</span>
                             <span class="skill-tag bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200 px-3 py-1 rounded-full text-sm font-medium">Typing</span>
-                         </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="experience" class="mb-16 fade-in-section">
-            <h2 class="text-3xl font-semibold mb-6 border-b-2 border-blue-200 dark:border-gray-700 pb-2 text-gray-900 dark:text-gray-100">Experience</h2>
-            <div class="space-y-8">
-                <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transition-colors duration-300">
+        <!-- Experience -->
+        <section id="experience" class="mb-20 fade-in-section">
+            <h2 class="section-heading text-3xl font-semibold mb-8 text-gray-900 dark:text-gray-100">Experience</h2>
+            <div class="space-y-6">
+                <div class="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md card-accent transition-colors duration-300">
                     <div class="flex flex-col sm:flex-row justify-between items-start mb-2 gap-2 sm:gap-4">
                         <div>
                             <h3 class="text-xl font-semibold text-blue-700 dark:text-blue-400">Content Writing Team Head</h3>
                             <p class="text-md text-gray-600 dark:text-gray-400">Association of Computer Enthusiasts</p>
                         </div>
-                        <span class="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap flex-shrink-0">Jul 2024 - Present</span>
+                        <span class="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap flex-shrink-0 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">Jul 2024 - Present</span>
                     </div>
-                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1 pl-4">
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1 pl-4 mt-3">
                         <li>Selection and implementation of a style guide</li>
                         <li>Training proofreaders and junior writers; team leadership and mentorship</li>
                         <li>Supervision of internal documents and general record-keeping</li>
                         <li>Event organization (hackathons, CTFs, revenue generation)</li>
                     </ul>
                 </div>
-                <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transition-colors duration-300">
+                <div class="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md card-accent transition-colors duration-300">
                     <div class="flex flex-col sm:flex-row justify-between items-start mb-2 gap-2 sm:gap-4">
                         <div>
                             <h3 class="text-xl font-semibold text-blue-700 dark:text-blue-400">Copyeditor</h3>
                             <p class="text-md text-gray-600 dark:text-gray-400">Fan Translation</p>
                         </div>
-                        <span class="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap flex-shrink-0">Mar 2022 - Present</span>
+                        <span class="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap flex-shrink-0 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">Mar 2022 - Present</span>
                     </div>
-                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1 pl-4">
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1 pl-4 mt-3">
                         <li>Work on comics and novels with hundreds of thousands of readers</li>
                         <li>Series management on projects with international staff members</li>
                     </ul>
                 </div>
-                <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transition-colors duration-300">
-                     <div class="flex flex-col sm:flex-row justify-between items-start mb-2 gap-2 sm:gap-4">
+                <div class="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md card-accent transition-colors duration-300">
+                    <div class="flex flex-col sm:flex-row justify-between items-start mb-2 gap-2 sm:gap-4">
                         <div>
                             <h3 class="text-xl font-semibold text-blue-700 dark:text-blue-400">Content Writing Intern</h3>
                             <p class="text-md text-gray-600 dark:text-gray-400">Pexilim</p>
                         </div>
-                        <span class="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap flex-shrink-0">Dec 2024 - Mar 2025</span>
+                        <span class="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap flex-shrink-0 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">Dec 2024 - Mar 2025</span>
                     </div>
-                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1 pl-4">
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1 pl-4 mt-3">
                         <li>Blog-writing for clients according to SEO specifications</li>
                         <li>Compliance with Copyleaks AI Detector and a plagiarism check</li>
                     </ul>
                 </div>
-                </div>
+            </div>
         </section>
 
-        <section id="education" class="mb-16 fade-in-section">
-            <h2 class="text-3xl font-semibold mb-6 border-b-2 border-blue-200 dark:border-gray-700 pb-2 text-gray-900 dark:text-gray-100">Education</h2>
+        <!-- Education -->
+        <section id="education" class="mb-20 fade-in-section">
+            <h2 class="section-heading text-3xl font-semibold mb-8 text-gray-900 dark:text-gray-100">Education</h2>
             <div class="space-y-6">
-                <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transition-colors duration-300">
-                     <div class="flex flex-col sm:flex-row justify-between items-start mb-1 gap-2 sm:gap-4">
+                <div class="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md card-accent transition-colors duration-300">
+                    <div class="flex flex-col sm:flex-row justify-between items-start mb-1 gap-2 sm:gap-4">
                         <div>
                             <h3 class="text-xl font-semibold text-blue-700 dark:text-blue-400">Bachelor of Computer Applications</h3>
                             <p class="text-md text-gray-600 dark:text-gray-400">Vivekananda Institute of Professional Studies, Pitampura</p>
                         </div>
-                        <span class="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap flex-shrink-0">2025</span>
+                        <span class="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap flex-shrink-0 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">2025</span>
                     </div>
-                    <p class="text-gray-700 dark:text-gray-300 mt-2">
+                    <p class="text-gray-700 dark:text-gray-300 mt-3">
                         Specialization in AI/ML.
                     </p>
                 </div>
-                <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transition-colors duration-300">
-                     <div class="flex flex-col sm:flex-row justify-between items-start mb-1 gap-2 sm:gap-4">
+                <div class="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md card-accent transition-colors duration-300">
+                    <div class="flex flex-col sm:flex-row justify-between items-start mb-1 gap-2 sm:gap-4">
                         <div>
                             <h3 class="text-xl font-semibold text-blue-700 dark:text-blue-400">PCEM Computer Science</h3>
                             <p class="text-md text-gray-600 dark:text-gray-400">Delhi Public School, Vasant Kunj</p>
                         </div>
-                        <span class="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap flex-shrink-0">2022</span>
+                        <span class="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap flex-shrink-0 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">2022</span>
                     </div>
                 </div>
-                </div>
+            </div>
         </section>
 
-        <section id="contact" class="mb-16 p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg fade-in-section transition-colors duration-300">
-            <h2 class="text-3xl font-semibold mb-6 text-center border-b-2 border-blue-200 dark:border-gray-700 pb-2 text-gray-900 dark:text-gray-100">Post Scriptum (Misc.)</h2>
+        <!-- Post Scriptum -->
+        <section id="contact" class="mb-20 p-8 bg-white dark:bg-gray-800 rounded-xl shadow-lg card-accent fade-in-section transition-colors duration-300">
+            <h2 class="section-heading text-3xl font-semibold mb-6 text-center text-gray-900 dark:text-gray-100 mx-auto">Post Scriptum (Misc.)</h2>
             <p class="text-gray-700 dark:text-gray-300 text-center max-w-lg mx-auto mb-8 leading-relaxed">
                 <strong>Favorite Game:</strong> Disco Elysium<br>
                 <strong>Favorite Genre:</strong> Swing<br>
@@ -344,115 +322,36 @@
                 If you want to say hi, feel free to reach out!
             </p>
             <div class="text-center">
-                 <a href="mailto:shubhamgupta@atsggx.net"
-                    class="inline-block bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition duration-300 transform hover:-translate-y-1">
-                     <i class="fas fa-envelope mr-2"></i> Email
-                 </a>
+                <a href="mailto:shubhamgupta@atsggx.net"
+                   class="inline-block bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-semibold px-8 py-3 rounded-lg shadow-md transition duration-300 transform hover:-translate-y-1 hover:shadow-lg">
+                    <i class="fas fa-envelope mr-2"></i> Email
+                </a>
             </div>
         </section>
 
     </main>
 
+    <!-- Footer -->
+    <div class="footer-divider"></div>
     <footer class="bg-gray-800 dark:bg-gray-950 text-gray-300 dark:text-gray-400 py-8 transition-colors duration-300">
-        <div class="container mx-auto px-6 text-center">
+        <div class="container mx-auto max-w-5xl px-6 text-center">
             <div class="mb-4 flex justify-center space-x-6">
-                <a href="https://www.linkedin.com/in/atsggx" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition duration-300">
+                <a href="https://www.linkedin.com/in/atsggx" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition duration-300 transform hover:-translate-y-1">
                     <i class="fab fa-linkedin fa-2x"></i>
                 </a>
-                <a href="https://github.com/atsggx" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition duration-300">
+                <a href="https://github.com/atsggx" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition duration-300 transform hover:-translate-y-1">
                     <i class="fab fa-github fa-2x"></i>
                 </a>
-                <a href="mailto:shubhamgupta@atsggx.net" class="text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition duration-300">
+                <a href="mailto:shubhamgupta@atsggx.net" class="text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition duration-300 transform hover:-translate-y-1">
                     <i class="fas fa-envelope fa-2x"></i>
                 </a>
             </div>
-            <p class="text-sm">© <span id="current-year"></span> Shubham Gupta. All rights reserved.</p>
+            <p class="text-sm">&copy; <span id="current-year"></span> Shubham Gupta. All rights reserved.</p>
             <p class="text-xs mt-2">Built with <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 underline">Tailwind CSS</a></p>
             <p class="text-xs mt-2">Designs courtesy <a href="https://aistudio.google.com" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 underline">Gemini</a></p>
         </div>
     </footer>
 
-    <script>
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuIcon = mobileMenuButton.querySelector('i');
-
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            if (mobileMenuIcon.classList.contains('fa-bars')) {
-                mobileMenuIcon.classList.remove('fa-bars');
-                mobileMenuIcon.classList.add('fa-times');
-            } else {
-                mobileMenuIcon.classList.remove('fa-times');
-                mobileMenuIcon.classList.add('fa-bars');
-            }
-        });
-
-        const mobileNavLinks = mobileMenu.querySelectorAll('a');
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                 mobileMenuIcon.classList.remove('fa-times');
-                 mobileMenuIcon.classList.add('fa-bars');
-            });
-        });
-
-        const sections = document.querySelectorAll('.fade-in-section');
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-        const observerCallback = (entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                }
-            });
-        };
-        const observer = new IntersectionObserver(observerCallback, observerOptions);
-        sections.forEach(section => observer.observe(section));
-
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-
-        const darkModeToggle = document.getElementById('dark-mode-toggle');
-        const darkModeIcon = document.getElementById('dark-mode-icon');
-        const htmlElement = document.documentElement;
-
-        const applyTheme = (theme) => {
-            if (theme === 'dark') {
-                htmlElement.classList.add('dark');
-                darkModeIcon.classList.remove('fa-moon');
-                darkModeIcon.classList.add('fa-sun');
-                darkModeToggle.setAttribute('aria-label', 'Disable Dark Mode');
-            } else {
-                htmlElement.classList.remove('dark');
-                darkModeIcon.classList.remove('fa-sun');
-                darkModeIcon.classList.add('fa-moon');
-                darkModeToggle.setAttribute('aria-label', 'Enable Dark Mode');
-            }
-        };
-
-        const savedTheme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        let currentTheme = htmlElement.classList.contains('dark') ? 'dark' : 'light';
-        applyTheme(currentTheme);
-
-        darkModeToggle.addEventListener('click', () => {
-            const isDarkMode = htmlElement.classList.contains('dark');
-            const newTheme = isDarkMode ? 'light' : 'dark';
-            applyTheme(newTheme);
-            localStorage.setItem('theme', newTheme);
-        });
-
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-            if (!localStorage.getItem('theme')) {
-                const newTheme = event.matches ? 'dark' : 'light';
-                applyTheme(newTheme);
-            }
-        });
-    </script>
-
+    <script src="assets/js/main.js"></script>
 </body>
 </html>

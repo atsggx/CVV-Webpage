@@ -1,0 +1,211 @@
+/* ===== Base & Variables ===== */
+:root {
+    --link-underline-color: #3b82f6;
+    --link-hover-color: #3b82f6;
+    --card-border-accent: #3b82f6;
+}
+
+html.dark {
+    --link-underline-color: #60a5fa;
+    --link-hover-color: #60a5fa;
+    --card-border-accent: #60a5fa;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+html {
+    scroll-padding-top: 80px;
+}
+
+@media (min-width: 768px) {
+    html {
+        scroll-padding-top: 70px;
+    }
+}
+
+/* ===== Frosted Navbar ===== */
+.navbar-frost {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+html.dark .navbar-frost {
+    background: rgba(17, 24, 39, 0.85);
+}
+
+/* ===== Fade-in Sections ===== */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== Nav Links ===== */
+.nav-link {
+    position: relative;
+    text-decoration: none;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: var(--link-underline-color);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.nav-link:hover {
+    color: var(--link-hover-color);
+}
+
+/* ===== Skill Tags ===== */
+.skill-tag {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.3s, color 0.3s;
+}
+
+.skill-tag:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Section Heading Accent ===== */
+.section-heading {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+.section-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 3rem;
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+}
+
+html.dark .section-heading::after {
+    background: linear-gradient(90deg, #60a5fa, #a78bfa);
+}
+
+/* ===== Card Hover Accent ===== */
+.card-accent {
+    border-left: 3px solid transparent;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.card-accent:hover {
+    border-left-color: var(--card-border-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+html.dark .card-accent:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Avatar Gradient Ring ===== */
+.avatar-ring {
+    padding: 4px;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+    border-radius: 9999px;
+    display: inline-block;
+}
+
+.avatar-ring img {
+    border: 3px solid white;
+    border-radius: 9999px;
+}
+
+html.dark .avatar-ring img {
+    border-color: #111827;
+}
+
+/* ===== Theme Toggle - Sun/Moon Morph ===== */
+.theme-toggle {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+
+.theme-toggle-icon {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+                opacity 0.35s ease;
+}
+
+/* Sun icon states */
+.theme-toggle .sun-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+.theme-toggle .moon-icon {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+}
+
+/* Dark mode: flip to moon */
+html.dark .theme-toggle .sun-icon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
+}
+
+html.dark .theme-toggle .moon-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+/* Sun ray animation */
+@keyframes ray-pulse {
+    0%, 100% { opacity: 0.85; }
+    50% { opacity: 1; }
+}
+
+.sun-icon .sun-ray {
+    animation: ray-pulse 3s ease-in-out infinite;
+}
+
+/* ===== Footer Gradient Divider ===== */
+.footer-divider {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #3b82f6, #8b5cf6, transparent);
+}
+
+/* ===== Project Card Image Hover ===== */
+.project-card img {
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover img {
+    transform: scale(1.05);
+}
