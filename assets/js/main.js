@@ -1,3 +1,28 @@
+/* ===== Spoiler Redactions ===== */
+const _r = {
+    ace: 'QUNF',
+    aceFull: 'QUNFIC0gQXNzb2NpYXRpb24gb2YgQ29tcHV0ZXIgRW50aHVzaWFzdHM=',
+    vips: 'Vml2ZWthbmFuZGEgSW5zdGl0dXRlIG9mIFByb2Zlc3Npb25hbCBTdHVkaWVz',
+    dps: 'RGVsaGkgUHVibGljIFNjaG9vbCwgVmFzYW50IEt1bmo='
+};
+
+document.querySelectorAll('.spoiler').forEach(el => {
+    const k = el.dataset.k;
+    if (_r[k]) {
+        const len = atob(_r[k]).length;
+        el.style.width = (k === 'ace' ? len : Math.round(len * 0.8)) + 'ch';
+    }
+    el.textContent = '\u00A0';
+    el.addEventListener('click', function () {
+        if (!this.classList.contains('revealed')) {
+            if (_r[k]) {
+                this.textContent = atob(_r[k]);
+                this.classList.add('revealed');
+            }
+        }
+    });
+});
+
 /* ===== Mobile Menu ===== */
 const mobileMenuButton = document.getElementById('mobile-menu-button');
 const mobileMenu = document.getElementById('mobile-menu');
